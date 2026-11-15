@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taufik Rahman | Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darker: '#0f2929', // Biru tosca gelap
+                        dark: '#143636',   // Biru tosca agak terang untuk card
+                        neon: '#2dd4bf',   // Tosca terang buat aksen (teal-400)
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animasi Kursor Mengetik */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Efek 3D Card Global */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .card-3d:hover {
+            transform: rotateX(10deg) rotateY(-10deg) translateY(-10px);
+            box-shadow: -15px 15px 30px rgba(45, 212, 191, 0.2);
+        }
+        /* Khusus Profile Pic biar muternya lebih soft */
+        .profile-3d:hover {
+            transform: rotateX(5deg) rotateY(-5deg) translateY(-5px) scale(1.05);
+        }
+        .content-3d {
+            transform: translateZ(40px);
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-300 font-sans antialiased selection:bg-neon selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-dark/90 backdrop-blur-md border-b border-neon/20 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-tighter">Taufik<span class="text-neon">Dev</span></a>
+            <div class="space-x-6 text-sm font-medium hidden md:block">
+                <a href="#about" class="hover:text-neon transition">About</a>
+                <a href="#projects" class="hover:text-neon transition">Playground</a>
+                <a href="#repo-story" class="hover:text-neon transition">Repos</a>
+                <a href="#contact" class="hover:text-neon transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 perspective-1000">
+        <!-- Foto Profil dengan efek Glowing & 3D -->
+        <div class="relative mb-8 group card-3d profile-3d cursor-pointer">
+            <div class="absolute inset-0 bg-neon rounded-full blur-md opacity-40 group-hover:opacity-70 transition duration-500 content-3d"></div>
+            <img src="{{ url_for('static', filename='taufik.jpg') }}" alt="Taufik Rahman" class="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-neon object-cover shadow-lg content-3d">
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4">Hi, I'm <span class="text-neon">Taufik Rahman</span></h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-8 h-8 typing-cursor" id="typewriter"></p>
+        <a href="#projects" class="px-8 py-3 border border-neon text-neon font-semibold rounded-full hover:bg-neon hover:text-darker transition duration-300">View My Work</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Who Am I?</h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                Saya mahasiswa Ilmu Komputer di Universitas Bina Bangsa Getsempena yang suka ngoprek kode dan hardware. 
+                Sehari-hari saya asyik ngebangun web pakai Flask & Tailwind, ngelatih model AI buat Computer Vision, 
+                sampai ngerakit sensor mikrokontroler pakai Arduino. Kalau otak lagi ngebul ngadepin bug, 
+                biasanya saya pelarian push rank di Free Fire, MLBB, atau PUBG.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 perspective-1000">
+                <span class="px-4 py-2 bg-darker rounded-md border border-neon/30 text-neon text-sm font-medium card-3d cursor-default"><div class="content-3d">Python (Flask)</div></span>
+                <span class="px-4 py-2 bg-darker rounded-md border border-neon/30 text-neon text-sm font-medium card-3d cursor-default"><div class="content-3d">Tailwind CSS</div></span>
+                <span class="px-4 py-2 bg-darker rounded-md border border-neon/30 text-neon text-sm font-medium card-3d cursor-default"><div class="content-3d">SQLite</div></span>
+                <span class="px-4 py-2 bg-darker rounded-md border border-neon/30 text-neon text-sm font-medium card-3d cursor-default"><div class="content-3d">YOLOv8 & OpenCV</div></span>
+                <span class="px-4 py-2 bg-darker rounded-md border border-neon/30 text-neon text-sm font-medium card-3d cursor-default"><div class="content-3d">Arduino Uno</div></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-10 text-center">My Playground</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 perspective-1000">
+                
+                <!-- Project 1 -->
+                <div class="bg-dark p-6 rounded-xl border border-neon/20 hover:border-neon transition duration-300 group shadow-lg card-3d">
+                    <div class="content-3d flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon transition">05 STORE</h3>
+                        <p class="text-gray-400 mb-6 text-sm flex-grow">Platform e-commerce toko baju online. Fitur matriks ukuran, ulasan produk, integrasi checkout langsung ke WhatsApp, dan export analitik ke Excel.</p>
+                        <div class="text-xs text-neon font-mono mt-auto">Flask | SQLite | HTML/CSS</div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-dark p-6 rounded-xl border border-neon/20 hover:border-neon transition duration-300 group shadow-lg card-3d">
+                    <div class="content-3d flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon transition">TomatoVision & Mango Tracker</h3>
+                        <p class="text-gray-400 mb-6 text-sm flex-grow">Sistem AI Computer Vision untuk klasifikasi kematangan tomat dan tracking mangga real-time dengan pencatatan log otomatis.</p>
+                        <div class="text-xs text-neon font-mono mt-auto">PyTorch | YOLOv8 | OpenCV | ByteTrack</div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-dark p-6 rounded-xl border border-neon/20 hover:border-neon transition duration-300 group shadow-lg card-3d">
+                    <div class="content-3d flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon transition">Truth Table Generator</h3>
+                        <p class="text-gray-400 mb-6 text-sm flex-grow">Web aplikasi matematis untuk memecahkan logika diskrit dan menghasilkan tabel kebenaran secara instan.</p>
+                        <div class="text-xs text-neon font-mono mt-auto">Python SymPy | Flask</div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-dark p-6 rounded-xl border border-neon/20 hover:border-neon transition duration-300 group shadow-lg card-3d">
+                    <div class="content-3d flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon transition">Ultrasonic Parking Sensor</h3>
+                        <p class="text-gray-400 mb-6 text-sm flex-grow">Sistem hardware prototipe sensor parkir yang dilengkapi modul HC-SR04, layar LCD I2C 16x2, buzzer, dan indikator jarak LED.</p>
+                        <div class="text-xs text-neon font-mono mt-auto">Arduino | C++ | Hardware Tinkering</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Repository Story Section -->
+    <section id="repo-story" class="py-20 bg-darker">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-10 text-center">My GitHub <span class="text-neon">Stories</span></h2>
+            
+            <div class="flex flex-wrap justify-center gap-8 perspective-1000">
+                
+                <!-- Repo Card 1 (05 STORE) -->
+                <a href="https://github.com/taufikkkkkk/toko_baju_online_shop" target="_blank" class="block w-full sm:w-80 bg-dark p-6 rounded-2xl border border-neon/30 card-3d relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="content-3d flex flex-col h-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <svg class="text-neon w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                            <span class="text-xs font-mono px-2 py-1 bg-neon/10 text-neon rounded">Public</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">toko_baju_online_shop</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">Platform e-commerce dengan Flask, SQLite, dan fitur checkout WhatsApp.</p>
+                        <div class="flex gap-2 mt-auto">
+                            <span class="text-xs text-gray-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Python</span>
+                            <span class="text-xs text-gray-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-500"></span> HTML/CSS</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Repo Card 2 (TomatoVision) -->
+                <a href="https://github.com/taufikkkkkk/tomato_ripeness_detector" target="_blank" class="block w-full sm:w-80 bg-dark p-6 rounded-2xl border border-neon/30 card-3d relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="content-3d flex flex-col h-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <svg class="text-neon w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                            <span class="text-xs font-mono px-2 py-1 bg-neon/10 text-neon rounded">Public</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">TomatoVision_AI</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">Computer vision pakai YOLO dan PyTorch untuk mendeteksi kematangan tomat.</p>
+                        <div class="flex gap-2 mt-auto">
+                            <span class="text-xs text-gray-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Python</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Repo Card 3 (Truth Table Generator) -->
+                <a href="https://github.com/taufikkkkkk/generator-tabel-kebenaran" target="_blank" class="block w-full sm:w-80 bg-dark p-6 rounded-2xl border border-neon/30 card-3d relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="content-3d flex flex-col h-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <svg class="text-neon w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                            <span class="text-xs font-mono px-2 py-1 bg-neon/10 text-neon rounded">Public</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">truth-table-gen</h3>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow">Web app pakai SymPy buat auto-generate tabel kebenaran logika diskrit.</p>
+                        <div class="flex gap-2 mt-auto">
+                            <span class="text-xs text-gray-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Python</span>
+                            <span class="text-xs text-gray-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-500"></span> HTML/CSS</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <section id="contact" class="py-20 bg-dark text-center border-t border-neon/20">
+        <h2 class="text-3xl font-bold text-white mb-6">Hit Me Up</h2>
+        <p class="text-gray-400 mb-8">Let's talk about code, AI, hardware, or maybe just mabar.</p>
+        
+        <!-- Tombol GitHub dengan Ikon -->
+        <a href="https://github.com/taufikkkkkk" target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-3 bg-neon text-darker font-bold rounded-lg hover:bg-white hover:text-darker transition duration-300 shadow-[0_0_15px_rgba(45,212,191,0.4)] card-3d">
+            <div class="content-3d flex items-center gap-3">
+                <!-- Ikon GitHub (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Check my GitHub (@taufikkkkkk)
+            </div>
+        </a>
+    </section>
+
+    <!-- Typing Effect Script -->
+    <script>
+        const words = ["Web Developer.", "Computer Science Student.", "AI & Vision Enthusiast.", "Hardware Tinkerer."];
+        let i = 0;
+        let timer;
+        
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typewriter').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typewriter').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    typingEffect();
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+        typingEffect();
+    </script>
+</body>
+</html>

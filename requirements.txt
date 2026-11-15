@@ -1,0 +1,12 @@
+# Web Framework
+Flask==3.0.0
+Werkzeug==3.0.0
+Jinja2==3.1.2
+
+# WSGI HTTP Server (Dibutuhkan nanti pas webnya di-online-kan)
+gunicorn==21.2.0
+
+# Library tambahan (Bisa lu uncomment/hapus pagarnya kalau portofolio ini 
+# mau lu kembangin buat nampilin output AI atau Truth Table secara langsung)
+# numpy==1.26.0
+# sympy==1.12
