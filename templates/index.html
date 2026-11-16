@@ -49,11 +49,11 @@
     <!-- Navbar -->
     <nav class="fixed w-full glass-panel border-b-0 border-neon/30 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white tracking-tighter">Taufik<span class="text-neon">Dev</span></a>
-            <div class="space-x-6 text-sm font-medium hidden md:block">
+            <a href="#" class="text-2xl font-bold text-white tracking-tighter content-z">Taufik<span class="text-neon">Dev</span></a>
+            <div class="space-x-6 text-sm font-medium hidden md:block content-z">
                 <a href="#about" class="hover:text-neon transition">About</a>
+                <a href="#skills" class="hover:text-neon transition">Skills</a>
                 <a href="#projects" class="hover:text-neon transition">Playground</a>
-                <a href="#repo-story" class="hover:text-neon transition">Repos</a>
                 <a href="#contact" class="hover:text-neon transition">Contact</a>
             </div>
         </div>
@@ -69,7 +69,7 @@
 
         <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4 drop-shadow-lg content-z">Hi, I'm <span class="text-neon">Taufik Rahman</span></h1>
         <p class="text-xl md:text-2xl text-gray-300 mb-8 h-8 typing-cursor drop-shadow-md content-z" id="typewriter"></p>
-        <a href="#projects" class="px-8 py-3 glass-panel text-neon font-bold rounded-full hover:bg-neon hover:text-dark transition duration-300 shadow-[0_0_15px_rgba(45,212,191,0.4)] content-z">View My Work</a>
+        <a href="#projects" class="px-8 py-3 glass-panel text-neon font-bold rounded-full hover:bg-neon hover:text-white transition duration-300 shadow-[0_0_15px_rgba(45,212,191,0.4)] content-z">View My Work</a>
     </section>
 
     <!-- About Section -->
@@ -77,19 +77,86 @@
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="glass-panel p-10 rounded-2xl" data-tilt data-tilt-max="3" data-tilt-glare data-tilt-max-glare="0.1">
                 <h2 class="text-3xl font-bold text-white mb-6 content-z">Who Am I?</h2>
-                <p class="text-lg text-gray-300 leading-relaxed mb-8 content-z">
+                <p class="text-lg text-gray-300 leading-relaxed mb-4 content-z">
                     Saya mahasiswa Ilmu Komputer di Universitas Bina Bangsa Getsempena yang suka ngoprek kode dan hardware. 
                     Sehari-hari saya asyik ngebangun web pakai Flask & Tailwind, ngelatih model AI buat Computer Vision, 
-                    sampai ngerakit sensor mikrokontroler pakai Arduino. Kalau otak lagi ngebul ngadepin bug, 
-                    biasanya saya pelarian push rank di Free Fire, MLBB, atau PUBG.
+                    sampai ngerakit sensor mikrokontroler pakai Arduino. 
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 content-z">
-                    <span class="px-4 py-2 bg-dark/50 rounded-md border border-neon/30 text-neon text-sm font-medium">Python (Flask)</span>
-                    <span class="px-4 py-2 bg-dark/50 rounded-md border border-neon/30 text-neon text-sm font-medium">Tailwind CSS</span>
-                    <span class="px-4 py-2 bg-dark/50 rounded-md border border-neon/30 text-neon text-sm font-medium">SQLite</span>
-                    <span class="px-4 py-2 bg-dark/50 rounded-md border border-neon/30 text-neon text-sm font-medium">YOLOv8 & OpenCV</span>
-                    <span class="px-4 py-2 bg-dark/50 rounded-md border border-neon/30 text-neon text-sm font-medium">Arduino Uno</span>
+                <p class="text-lg text-gray-300 leading-relaxed content-z">
+                    Kalau otak lagi ngebul ngadepin bug, biasanya saya pelarian push rank di Free Fire, MLBB, atau PUBG pakai laptop tempur Lenovo LOQ saya.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (Baru ditambahkan) -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-10 drop-shadow-md content-z">Tech Arsenal</h2>
+            
+            <!-- Grid Skills -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                
+                <!-- Card Python -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">Python</span>
                 </div>
+
+                <!-- Card Flask -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">Flask</span>
+                </div>
+
+                <!-- Card Tailwind CSS -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(45,212,191,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">Tailwind CSS</span>
+                </div>
+
+                <!-- Card JavaScript -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">JavaScript</span>
+                </div>
+
+                <!-- Card SQLite / PostgreSQL -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">Databases</span>
+                </div>
+
+                <!-- Card PyTorch -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">PyTorch</span>
+                </div>
+
+                <!-- Card YOLOv8 -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">YOLOv8</span>
+                </div>
+
+                <!-- Card OpenCV -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">OpenCV</span>
+                </div>
+
+                <!-- Card Arduino -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-teal-600 shadow-[0_0_10px_rgba(13,148,136,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">Arduino</span>
+                </div>
+
+                <!-- Card Git / GitHub -->
+                <div class="glass-panel p-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer hover:border-neon transition duration-300" data-tilt data-tilt-glare data-tilt-max-glare="0.4" data-tilt-scale="1.1">
+                    <div class="w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.8)] content-z"></div>
+                    <span class="font-bold text-white content-z tracking-wide">Git & GitHub</span>
+                </div>
+
             </div>
         </div>
     </section>
