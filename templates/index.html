@@ -68,22 +68,6 @@
         #cursor-glow {
             pointer-events: none; position: fixed; inset: 0; z-index: -2; transition: opacity 0.3s ease;
         }
-
-        /* Custom Magnetic Cursor (Desktop Only) */
-        @media (pointer: fine) {
-            body, a, button, .glass-panel, img { cursor: none !important; }
-        }
-        #cursor-dot, #cursor-ring {
-            pointer-events: none; position: fixed; top: 0; left: 0;
-            transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999;
-        }
-        #cursor-dot {
-            width: 6px; height: 6px; background-color: #2dd4bf; transition: width 0.2s, height 0.2s;
-        }
-        #cursor-ring {
-            width: 36px; height: 36px; border: 1px solid rgba(45,212,191,0.5);
-            transition: transform 0.1s ease-out, width 0.3s, height 0.3s, background-color 0.3s;
-        }
     </style>
 </head>
 <body class="text-gray-300 font-sans antialiased selection:bg-neon selection:text-dark bg-dark overflow-x-hidden">
@@ -97,10 +81,6 @@
     </div>
     <style>@keyframes slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }</style>
 
-    <!-- Custom Cursor -->
-    <div id="cursor-dot" class="hidden md:block"></div>
-    <div id="cursor-ring" class="hidden md:block"></div>
-
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-neon z-[9999] w-0 shadow-[0_0_15px_rgba(45,212,191,0.8)]"></div>
 
@@ -112,20 +92,30 @@
     <!-- Navbar -->
     <nav class="fixed w-full glass-panel !border-none !bg-dark/40 border-b border-white/5 z-50 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="#" class="hover-trigger text-2xl font-extrabold text-white tracking-widest">Taufik<span class="text-neon">Dev</span></a>
+            <a href="#" class="text-2xl font-extrabold text-white tracking-widest">Taufik<span class="text-neon">Dev</span></a>
             <div class="space-x-10 text-xs font-semibold tracking-widest uppercase hidden md:block text-gray-400">
-                <a href="#about" class="hover-trigger hover:text-neon transition">About</a>
-                <a href="#skills" class="hover-trigger hover:text-neon transition">Skills</a>
-                <a href="#projects" class="hover-trigger hover:text-neon transition">Playground</a>
-                <a href="#contact" class="hover-trigger hover:text-neon transition">Contact</a>
+                <a href="#about" class="hover:text-neon transition">About</a>
+                <a href="#skills" class="hover:text-neon transition">Skills</a>
+                <a href="#projects" class="hover:text-neon transition">Playground</a>
+                <a href="#contact" class="hover:text-neon transition">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 relative z-10">
+        
+        <!-- Pulsing Availability Badge -->
+        <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100" class="mb-8 flex items-center justify-center gap-3 px-4 py-2 rounded-full border border-neon/30 bg-neon/5 backdrop-blur-sm cursor-default">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon shadow-[0_0_8px_rgba(45,212,191,1)]"></span>
+            </span>
+            <span class="text-xs font-mono text-neon uppercase tracking-widest">Available for New Projects</span>
+        </div>
+
         <!-- Foto Profil 3D Minimalis -->
-        <div data-aos="zoom-in" data-aos-duration="1500" class="hover-trigger relative mb-12 group" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-scale="1.05">
+        <div data-aos="zoom-in" data-aos-duration="1500" class="relative mb-12 group cursor-pointer" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-tilt-scale="1.05">
             <div class="absolute inset-0 bg-neon rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition duration-700"></div>
             <img src="{{ url_for('static', filename='taufik.jpg') }}" alt="Taufik Rahman" class="relative w-40 h-40 md:w-48 md:h-48 rounded-full border border-white/10 object-cover shadow-[0_0_30px_rgba(0,0,0,0.8)] content-z grayscale hover:grayscale-0 transition-all duration-700">
         </div>
@@ -136,7 +126,7 @@
         <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="text-lg md:text-xl text-gray-400 font-light mb-12 h-8 typing-cursor tracking-wide" id="typewriter"></p>
         
         <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-            <a href="#projects" class="hover-trigger inline-block px-12 py-4 border border-neon/50 text-neon font-semibold tracking-widest uppercase text-xs rounded-full hover:bg-neon hover:text-dark hover:border-neon transition-all duration-500 shadow-[0_0_15px_rgba(45,212,191,0.1)] hover:shadow-[0_0_30px_rgba(45,212,191,0.4)]">
+            <a href="#projects" class="inline-block px-12 py-4 border border-neon/50 text-neon font-semibold tracking-widest uppercase text-xs rounded-full hover:bg-neon hover:text-dark hover:border-neon transition-all duration-500 shadow-[0_0_15px_rgba(45,212,191,0.1)] hover:shadow-[0_0_30px_rgba(45,212,191,0.4)]">
                 Discover My Work
             </a>
         </div>
@@ -146,7 +136,7 @@
     <section id="about" class="py-32 relative z-10">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <div data-aos="fade-up" data-aos-duration="1200">
-                <div class="hover-trigger glass-panel p-12 md:p-16 rounded-[2.5rem]" data-tilt data-tilt-max="2" data-tilt-glare data-tilt-max-glare="0.05">
+                <div class="glass-panel p-12 md:p-16 rounded-[2.5rem]" data-tilt data-tilt-max="2" data-tilt-glare data-tilt-max-glare="0.05">
                     <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 content-z tracking-tight">The <span class="text-neon">Developer</span></h2>
                     <p class="text-base md:text-lg text-gray-400 leading-loose mb-6 content-z font-light">
                         Mahasiswa Ilmu Komputer di Universitas Bina Bangsa Getsempena yang memadukan dunia digital dan fisikal. 
@@ -154,8 +144,8 @@
                         merancang kecerdasan buatan berbasis <strong class="text-white font-medium">Computer Vision</strong>, 
                         dan merekayasa perangkat keras melalui <strong class="text-white font-medium">Arduino</strong>. 
                     </p>
-                    <p class="text-base md:text-lg text-gray-400 leading-loose content-z font-light">
-                        Di luar kode dan sirkuit, saya menjaga keseimbangan logika dengan bermain <span class="text-neon">Free Fire, MLBB, dan PUBG</span> menggunakan mesin Lenovo LOQ.
+                    <p class="text-base md:text-lg text-gray-400 leading-loose content-z font-light italic">
+                        "Berkomitmen merancang pengalaman digital yang mulus melalui kode yang bersih dan desain inovatif."
                     </p>
                 </div>
             </div>
@@ -170,61 +160,61 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 <!-- Data AOS -->
                 <div data-aos="zoom-in" data-aos-delay="100">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-blue-400/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">Python</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="150">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-white/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition content-z"><div class="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">Flask</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="200">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-teal-400/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-teal-500/10 flex items-center justify-center group-hover:bg-teal-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_10px_rgba(45,212,191,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">Tailwind</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="250">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-yellow-400/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center group-hover:bg-yellow-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">JavaScript</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="300">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-blue-600/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center group-hover:bg-blue-600/20 transition content-z"><div class="w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">Databases</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="100">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-red-500/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center group-hover:bg-red-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">PyTorch</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="150">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-purple-500/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">YOLOv8</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="200">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-green-400/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center group-hover:bg-green-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">OpenCV</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="250">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-teal-600/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-teal-600/10 flex items-center justify-center group-hover:bg-teal-600/20 transition content-z"><div class="w-2 h-2 rounded-full bg-teal-600 shadow-[0_0_10px_rgba(13,148,136,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">Arduino</span>
                     </div>
                 </div>
                 <div data-aos="zoom-in" data-aos-delay="300">
-                    <div class="hover-trigger glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 transition duration-500 group" data-tilt data-tilt-scale="1.05">
+                    <div class="glass-panel py-6 px-4 rounded-2xl flex flex-col items-center justify-center gap-4 hover:bg-white/5 hover:border-orange-500/30 transition-all duration-500 group" data-tilt data-tilt-scale="1.05">
                         <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500/20 transition content-z"><div class="w-2 h-2 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,1)]"></div></div>
                         <span class="font-medium text-gray-300 text-sm tracking-wider content-z">Git / GitHub</span>
                     </div>
@@ -241,7 +231,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="hover-trigger glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 transition duration-500 h-full flex flex-col group" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
+                    <div class="glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 hover:shadow-[0_0_40px_rgba(45,212,191,0.15)] transition-all duration-500 h-full flex flex-col group cursor-pointer" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
                         <div class="content-z flex flex-col h-full">
                             <div class="flex justify-between items-start mb-8">
                                 <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-dark/50 group-hover:border-neon/50 transition"><svg class="w-5 h-5 text-gray-300 group-hover:text-neon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg></div>
@@ -257,7 +247,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="hover-trigger glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 transition duration-500 h-full flex flex-col group" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
+                    <div class="glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 hover:shadow-[0_0_40px_rgba(45,212,191,0.15)] transition-all duration-500 h-full flex flex-col group cursor-pointer" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
                         <div class="content-z flex flex-col h-full">
                             <div class="flex justify-between items-start mb-8">
                                 <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-dark/50 group-hover:border-neon/50 transition"><svg class="w-5 h-5 text-gray-300 group-hover:text-neon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div>
@@ -273,7 +263,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="hover-trigger glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 transition duration-500 h-full flex flex-col group" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
+                    <div class="glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 hover:shadow-[0_0_40px_rgba(45,212,191,0.15)] transition-all duration-500 h-full flex flex-col group cursor-pointer" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
                         <div class="content-z flex flex-col h-full">
                             <div class="flex justify-between items-start mb-8">
                                 <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-dark/50 group-hover:border-neon/50 transition"><svg class="w-5 h-5 text-gray-300 group-hover:text-neon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg></div>
@@ -289,7 +279,7 @@
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="hover-trigger glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 transition duration-500 h-full flex flex-col group" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
+                    <div class="glass-panel p-10 rounded-[2rem] shadow-2xl hover:bg-white/5 hover:shadow-[0_0_40px_rgba(45,212,191,0.15)] transition-all duration-500 h-full flex flex-col group cursor-pointer" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-tilt-scale="1.02">
                         <div class="content-z flex flex-col h-full">
                             <div class="flex justify-between items-start mb-8">
                                 <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center bg-dark/50 group-hover:border-neon/50 transition"><svg class="w-5 h-5 text-gray-300 group-hover:text-neon transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg></div>
@@ -315,19 +305,19 @@
             <p class="text-base text-gray-400 font-light mb-16 tracking-wide">Code, AI, hardware, or maybe just mabar.</p>
             
             <div class="flex flex-wrap justify-center gap-6 px-4">
-                <a href="https://github.com/taufikkkkkk" target="_blank" class="hover-trigger inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
+                <a href="https://github.com/taufikkkkkk" target="_blank" class="inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="content-z"><svg class="w-6 h-6 text-gray-300 group-hover:text-white transition" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div>
                 </a>
 
-                <a href="https://www.instagram.com/taufik.rrhman" target="_blank" class="hover-trigger inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
+                <a href="https://www.instagram.com/taufik.rrhman" target="_blank" class="inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="content-z"><svg class="w-6 h-6 text-gray-300 group-hover:text-white transition" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
                 </a>
 
-                <a href="https://www.tiktok.com/@taufikk.rhmnn" target="_blank" class="hover-trigger inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
+                <a href="https://www.tiktok.com/@taufikk.rhmnn" target="_blank" class="inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="content-z"><svg class="w-6 h-6 text-gray-300 group-hover:text-white transition" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></div>
                 </a>
 
-                <a href="https://wa.me/6285167638281" target="_blank" class="hover-trigger inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
+                <a href="https://wa.me/6285167638281" target="_blank" class="inline-flex items-center justify-center p-4 glass-panel rounded-full hover:bg-white/10 transition-all duration-300 group" data-tilt data-tilt-scale="1.1" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="content-z"><svg class="w-6 h-6 text-gray-300 group-hover:text-white transition" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.245 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.898-4.45 9.898-9.892 0-2.641-1.027-5.124-2.894-6.992-1.866-1.867-4.349-2.895-6.992-2.895-5.451 0-9.898 4.451-9.898 9.892 0 1.91.526 3.731 1.524 5.362l1.084 1.774-1.084 3.962 4.072-1.069 1.8.966zm11.168-1.554c-.595-.298-3.513-1.734-4.057-1.932-.545-.198-.942-.298-1.338.298-.396.596-1.536 1.932-1.883 2.33-.347.397-.693.447-1.289.149-5.158-2.585-7.009-8.497-7.208-8.894-.197-.398.016-.607.309-.9.271-.271.595-.694.893-1.042.298-.347.397-.595.595-.992.197-.397.099-.744-.05-1.041-.148-.298-1.338-3.224-1.833-4.415-.483-1.16-1.002-1.005-1.338-1.005-.347-.001-.744-.001-1.14-.001-.397 0-1.041.149-1.587.744-.545.595-2.081 2.033-2.081 4.959 0 2.926 2.13 5.753 2.428 6.15.297.397 4.195 6.401 10.169 8.971 1.423.613 2.531.979 3.399 1.254 1.433.454 2.738.389 3.766.236 1.146-.171 3.513-1.438 4.009-2.826.495-1.388.495-2.579.347-2.827-.149-.248-.545-.398-1.14-.696z"/></svg></div>
                 </a>
             </div>
@@ -351,7 +341,7 @@
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => preloader.style.display = 'none', 1000);
-            }, 800); // Tahan dikit biar keren
+            }, 800);
         });
 
         // Init Scroll Animations
@@ -365,48 +355,12 @@
             document.getElementById("scroll-progress").style.width = scrolled + "%";
         });
 
-        // Custom Magnetic Cursor Logic
-        const dot = document.getElementById('cursor-dot');
-        const ring = document.getElementById('cursor-ring');
+        // Background Aura Cursor Glow (Tanpa mengganti kursor utama)
         const glow = document.getElementById('cursor-glow');
-        
-        let mouseX = 0, mouseY = 0;
-        let ringX = 0, ringY = 0;
-
         document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX; mouseY = e.clientY;
-            // Update dot langsung
-            if(dot && ring) {
-                dot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
-                // Update glow effect di background
-                glow.style.background = `radial-gradient(800px circle at ${mouseX}px ${mouseY}px, rgba(45,212,191,0.06), transparent 40%)`;
+            if(glow) {
+                glow.style.background = `radial-gradient(800px circle at ${e.clientX}px ${e.clientY}px, rgba(45,212,191,0.06), transparent 40%)`;
             }
-        });
-
-        // Bikin ring-nya delay dikit ngikutin dot biar lebih "hidup"
-        function animateRing() {
-            ringX += (mouseX - ringX) * 0.2;
-            ringY += (mouseY - ringY) * 0.2;
-            if(ring) ring.style.transform = `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
-            requestAnimationFrame(animateRing);
-        }
-        animateRing();
-
-        // Kalau kursor nyentuh area interaktif, cincin membesar
-        const hoverTriggers = document.querySelectorAll('.hover-trigger');
-        hoverTriggers.forEach(trigger => {
-            trigger.addEventListener('mouseenter', () => {
-                if(ring) {
-                    ring.style.width = '60px'; ring.style.height = '60px';
-                    ring.style.backgroundColor = 'rgba(45,212,191,0.1)';
-                }
-            });
-            trigger.addEventListener('mouseleave', () => {
-                if(ring) {
-                    ring.style.width = '36px'; ring.style.height = '36px';
-                    ring.style.backgroundColor = 'transparent';
-                }
-            });
         });
 
         // Efek Mengetik
